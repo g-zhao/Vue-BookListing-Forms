@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>{{ title }}</h1>
-    <input type="text" placeholder="Search Books" v-model="searchInput" />
+    <input type="text" placeholder="Search Books" v-model="searchInput" >
     <ul>
       <book-item v-for="book in searchedBooks" :key="book.id" :book="book"></book-item>
     </ul>
@@ -58,7 +58,7 @@ export default {
       ],
       filters: ["bought", "borrowed"],
       holding: "bought",
-      searchInput: "",
+      searchInput: ""
     };
   },
   components: {
@@ -70,7 +70,7 @@ export default {
       return _.filter(this.books, ["ownership", this.holding]);
     },
     searchedBooks() {
-      const searchFilter = (book) => {
+      const searchFilter = book => {
         return book.title.toLowerCase().match(this.searchInput.toLowerCase());
       }
         return _.filter(this.books, searchFilter);
